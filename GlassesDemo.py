@@ -83,7 +83,7 @@ def clean_text(text):
 
 def read_file():
     """读取 CSV 文件"""
-    df = pd.read_csv("testTrainData.csv",
+    df = pd.read_csv("DataSets/testTrainData.csv",
                      delimiter=",",
                      encoding="utf-8-sig",
                      index_col=0)

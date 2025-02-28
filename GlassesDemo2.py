@@ -83,7 +83,7 @@ def clean_text(text):
 
 def read_file():
     """读取 CSV 文件（保持原有功能）"""
-    df = pd.read_csv("testTrainData.csv",
+    df = pd.read_csv("DataSets/testTrainData.csv",
                      delimiter=",",
                      encoding="utf-8-sig",
                      index_col=0)
@@ -97,7 +97,7 @@ def read_file():
 
 
 # ================== 4. HDF5 缓存（集成索引存储）==================
-HDF5_FILENAME = f"processed_data_{model_name}.h5"
+HDF5_FILENAME = f"./DataSets/processed_data_{model_name}.h5"
 
 
 def save_cache(df, vectors):
@@ -271,7 +271,7 @@ if __name__ == "__main__":
 
     # 示例搜索
     vectorizer = Vectorizer()
-    queries = ["CatEye and fassion frames", "Aviator and clear frames"]
+    queries = ["Red, Small, cateEye", "Aviator and clear frames"]
     results = semantic_search(queries, vectorizer, faiss_index, df)
 
     # 打印结果
