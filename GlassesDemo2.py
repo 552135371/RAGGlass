@@ -12,13 +12,15 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
 import faiss
+import json
+import time
 
 # 配置日志
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 model_name = 'paraphrase-multilingual-mpnet-base-v2'
-
+GoldenDataTest = "./DataSets/GoldenTestSet.json"
 
 # ================== 1. 向量化类（含 Faiss 接口）==================
 class Vectorizer:
@@ -83,7 +85,7 @@ def clean_text(text):
 
 def read_file():
     """读取 CSV 文件（保持原有功能）"""
-    df = pd.read_csv("DataSets/testTrainData.csv",
+    df = pd.read_csv("./DataSets/testTrainData.csv",
                      delimiter=",",
                      encoding="utf-8-sig",
                      index_col=0)
@@ -253,7 +255,59 @@ def semantic_search(query_texts, vectorizer, index, df, top_k=5):
     return results
 
 
-# ================== 9. 主执行逻辑 ==================
+# ================== 10. 数据加载和评估 ==================
+def load_data(file_path):
+    """加载 GoldenTest.json 文件"""
+    with open(file_path, 'r', encoding='utf-8') as f:
+        return json.load(f)
+
+def compute_precision_recall(ground_truth, rag_recommended):
+    """计算准确率（Precision）和召回率（Recall）"""
+    total_precision = 0
+    total_recall = 0
+    count = 0
+
+    for test_case in ground_truth:
+        input_features = test_case["features"]
+        input_filtered = {k: v for k, v in input_features.items() if v != "nil"}  # 过滤掉无效 feature
+
+        if not input_filtered:
+            continue  # 跳过无特征的 case
+
+        # 获取当前 Input 对应的 RAG 推荐商品
+        recommended_glasses = rag_recommended.get(test_case["input"], [])
+        
+        # 提取推荐商品的特征字典列表
+        recommended_features = [eval(rec["text"]) for rec in recommended_glasses]  # 解析文本为字典
+
+        matched_counts = []  # 记录每个推荐商品的匹配情况
+        for rec_features in recommended_features:
+            # 检查所有过滤后的特征是否匹配
+            match_count = sum(
+                1 for key, value in input_filtered.items() 
+                if rec_features.get(key, "").lower() == value.lower()
+            )
+            # 只有当所有特征都匹配时才计数
+            if match_count == len(input_filtered):
+                matched_counts.append(match_count)
+
+        # 计算指标
+        relevant_count = len(matched_counts)
+        recommended_count = len(recommended_glasses)
+        
+        precision = relevant_count / recommended_count if recommended_count > 0 else 0
+        recall = relevant_count / 1  # 因为每个测试用例只有一个正确答案
+        
+        total_precision += precision
+        total_recall += recall
+        count += 1
+
+    avg_precision = total_precision / count if count else 0
+    avg_recall = total_recall / count if count else 0
+    return avg_precision, avg_recall
+
+
+# ================== 11. 主执行逻辑 ==================
 if __name__ == "__main__":
     # 处理数据（返回索引）
     df, vectors, faiss_index = process_data()
@@ -266,17 +320,50 @@ if __name__ == "__main__":
     print(f"示例文本:\n{df['text'].head()}\n")
     print(f"向量维度: {vectors.shape}\n")
 
-    # 可视化
-    # visualize_similarity(df, vectors)
+    # 加载测试数据
+    ground_truth = load_data(GoldenDataTest)
 
-    # 示例搜索
+    # 初始化 Vectorizer
     vectorizer = Vectorizer()
-    queries = ["Red, Small, cateEye", "Aviator and clear frames"]
-    results = semantic_search(queries, vectorizer, faiss_index, df)
 
-    # 打印结果
-    print("\n搜索结果:")
-    for res in results:
-        print(f"\n查询: {res['query']}")
-        for item in res["results"]:
-            print(f" - 相似度 {item['score']:.4f}: {item['text']}...")
+    # 计算每个输入的推荐结果
+    first_recommend_result = {}
+    all_recommend_results = []  # 用于存储所有推荐结果
+    start_time = time.time()  # Start timing
+    for test_case in ground_truth:
+        input_text = test_case["input"]
+        results = semantic_search([input_text], vectorizer, faiss_index, df)
+        
+        # 保留第一个推荐结果   
+        if results and results[0]["results"]:
+            first_recommend_result[input_text] = [results[0]["results"][0]]
+        
+        # 存储所有推荐结果
+        for result in results:
+            for rec in result["results"]:
+                all_recommend_results.append({
+                    "query": result["query"],
+                    "recommended_text": rec["text"],
+                    "score": rec["score"]
+                })
+
+    # 将推荐结果保存为 CSV 文件
+    results_df = pd.DataFrame(all_recommend_results)
+    results_df.to_csv("recommendation_results.csv", index=False, encoding='utf-8-sig')
+    logger.info("✅ 推荐结果已保存到 recommendation_results.csv")
+
+     # 记录运行时间
+    end_time = time.time()  # End timing
+    execution_time = end_time - start_time
+    # 计算准确率和召回率（使用全部推荐结果）
+    avg_precision, avg_recall = compute_precision_recall(ground_truth, {k: v["results"] for k, v in first_recommend_result.items()})
+
+    # 打印评估结果
+    print(f"\n平均准确率: {avg_precision:.4f}")
+    print(f"平均召回率: {avg_recall:.4f}")
+    # 输出到日志文件
+    with open("execution_time_log.txt", "a") as log_file:
+        log_file.write(f"Execution Time: {execution_time:.2f} seconds\n")
+        log_file.write(f"Average Precision: {avg_precision:.4f}\n")
+        log_file.write(f"Average Recall: {avg_recall:.4f}\n")
+

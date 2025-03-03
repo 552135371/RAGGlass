@@ -1,0 +1,242 @@
+[
+  {
+    "input": "Lightweight titanium glasses for outdoor sports",
+    "features": {
+      "Material": "Titanium",
+      "Weight": "18g-22g",
+      "Lens Width": "nil",
+      "Progressive Available": "nil",
+      "Readers Available": "nil",
+      "Is for Kids": "nil",
+      "USD Price": "150-300"
+    }
+  },
+  {
+    "input": "Affordable plastic kids glasses with cartoon patterns",
+    "features": {
+      "Material": "Acetate",
+      "Weight": "nil",
+      "Lens Width": "48-50mm",
+      "Progressive Available": "nil",
+      "Readers Available": "nil",
+      "Is for Kids": "1",
+      "USD Price": "30-50"
+    }
+  },
+  {
+    "input": "Stylish metal frame sunglasses for driving",
+    "features": {
+      "Material": "Metal",
+      "Weight": "nil",
+      "Lens Width": "57-59mm",
+      "Progressive Available": "nil",
+      "Readers Available": "nil",
+      "Is for Kids": "nil",
+      "USD Price": "80-120"
+    }
+  },
+  {
+    "input": "Blue light blocking glasses for office work",
+    "features": {
+      "Material": "nil",
+      "Weight": "nil",
+      "Lens Width": "50-55mm",
+      "Progressive Available": "nil",
+      "Readers Available": "nil",
+      "Is for Kids": "nil",
+      "USD Price": "nil"
+    }
+  },
+  {
+    "input": "High-end progressive reading glasses with gold trim",
+    "features": {
+      "Material": "nil",
+      "Weight": "nil",
+      "Lens Width": "nil",
+      "Progressive Available": "1",
+      "Readers Available": "1",
+      "Is for Kids": "nil",
+      "USD Price": "200-600"
+    }
+  },
+  {
+    "input": "Durable acetate frames for construction workers",
+    "features": {
+      "Material": "Acetate",
+      "Weight": "nil",
+      "Lens Width": "nil",
+      "Progressive Available": "nil",
+      "Readers Available": "nil",
+      "Is for Kids": "nil",
+      "USD Price": "nil"
+    }
+  },
+  {
+    "input": "Lightweight glasses for children's soccer games",
+    "features": {
+      "Material": "nil",
+      "Weight": "18g-22g",
+      "Lens Width": "48-50mm",
+      "Progressive Available": "nil",
+      "Readers Available": "nil",
+      "Is for Kids": "1",
+      "USD Price": "30-50"
+    }
+  },
+  {
+    "input": "Titanium rimless glasses for business meetings",
+    "features": {
+      "Material": "Titanium",
+      "Weight": "15g-20g",
+      "Lens Width": "nil",
+      "Progressive Available": "nil",
+      "Readers Available": "nil",
+      "Is for Kids": "nil",
+      "USD Price": "180-350"
+    }
+  },
+  {
+    "input": "Fashionable oversized sunglasses for beach vacations",
+    "features": {
+      "Material": "nil",
+      "Weight": "nil",
+      "Lens Width": "60-62mm",
+      "Progressive Available": "nil",
+      "Readers Available": "nil",
+      "Is for Kids": "nil",
+      "USD Price": "nil"
+    }
+  },
+  {
+    "input": "Adjustable nose pads glasses for sensitive skin",
+    "features": {
+      "Material": "nil",
+      "Weight": "nil",
+      "Lens Width": "nil",
+      "Progressive Available": "nil",
+      "Readers Available": "nil",
+      "Is for Kids": "nil",
+      "USD Price": "nil"
+    }
+  },
+  {
+    "input": "Progressive bifocal glasses with anti-glare coating",
+    "features": {
+      "Material": "nil",
+      "Weight": "nil",
+      "Lens Width": "nil",
+      "Progressive Available": "1",
+      "Readers Available": "1",
+      "Is for Kids": "nil",
+      "USD Price": "150-400"
+    }
+  },
+  {
+    "input": "Kids' flexible frames with shatterproof lenses",
+    "features": {
+      "Material": "nil",
+      "Weight": "nil",
+      "Lens Width": "48-50mm",
+      "Progressive Available": "nil",
+      "Readers Available": "nil",
+      "Is for Kids": "1",
+      "USD Price": "40-70"
+    }
+  },
+  {
+    "input": "Vintage-style round metal glasses for hipsters",
+    "features": {
+      "Material": "Metal",
+      "Weight": "nil",
+      "Lens Width": "52-54mm",
+      "Progressive Available": "nil",
+      "Readers Available": "nil",
+      "Is for Kids": "nil",
+      "USD Price": "90-160"
+    }
+  },
+  {
+    "input": "Lightweight glasses for marathon runners",
+    "features": {
+      "Material": "nil",
+      "Weight": "15g-20g",
+      "Lens Width": "nil",
+      "Progressive Available": "nil",
+      "Readers Available": "nil",
+      "Is for Kids": "nil",
+      "USD Price": "nil"
+    }
+  },
+  {
+    "input": "Acetate frames with floral patterns for teenagers",
+    "features": {
+      "Material": "Acetate",
+      "Weight": "nil",
+      "Lens Width": "50-52mm",
+      "Progressive Available": "nil",
+      "Readers Available": "nil",
+      "Is for Kids": "nil",
+      "USD Price": "nil"
+    }
+  },
+  {
+    "input": "Industrial safety glasses with side shields",
+    "features": {
+      "Material": "nil",
+      "Weight": "nil",
+      "Lens Width": "nil",
+      "Progressive Available": "nil",
+      "Readers Available": "nil",
+      "Is for Kids": "nil",
+      "USD Price": "nil"
+    }
+  },
+  {
+    "input": "Titanium glasses for pilots with polarized lenses",
+    "features": {
+      "Material": "Titanium",
+      "Weight": "18g-22g",
+      "Lens Width": "57-59mm",
+      "Progressive Available": "nil",
+      "Readers Available": "nil",
+      "Is for Kids": "nil",
+      "USD Price": "250-500"
+    }
+  },
+  {
+    "input": "Reading glasses with LED light built-in",
+    "features": {
+      "Material": "nil",
+      "Weight": "nil",
+      "Lens Width": "nil",
+      "Progressive Available": "nil",
+      "Readers Available": "1",
+      "Is for Kids": "nil",
+      "USD Price": "nil"
+    }
+  },
+  {
+    "input": "Foldable metal glasses for travel",
+    "features": {
+      "Material": "Metal",
+      "Weight": "20g-25g",
+      "Lens Width": "nil",
+      "Progressive Available": "nil",
+      "Readers Available": "nil",
+      "Is for Kids": "nil",
+      "USD Price": "70-130"
+    }
+  },
+  {
+    "input": "Glasses with photochromic lenses for cyclists",
+    "features": {
+      "Material": "nil",
+      "Weight": "nil",
+      "Lens Width": "nil",
+      "Progressive Available": "nil",
+      "Readers Available": "nil",
+      "Is for Kids": "nil",
+      "USD Price": "nil"
+    }
+  }
+]

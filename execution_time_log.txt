@@ -1,0 +1,6 @@
+Execution Time: 1.50 seconds
+Average Precision: 0.0000
+Average Recall: 0.0000
+Execution Time: 1.18 seconds
+Average Precision: 0.0000
+Average Recall: 0.0000
